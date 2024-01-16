@@ -80,19 +80,17 @@ user_input = user_input_features()
 st.subheader('Data Fitur:')
 st.write(user_input)
 
-# # Pilih hanya fitur yang digunakan saat melatih model
 selected_features = user_input[['battery_power', 'blue', 'clock_speed', 'dual_sim', 'fc', 'four_g',
        'int_memory', 'm_dep', 'mobile_wt', 'n_cores', 'pc', 'px_height',
        'px_width', 'ram', 'sc_h', 'sc_w', 'talk_time', 'three_g',
        'touch_screen', 'wifi', 'price_range']]
 
-# # Prediksi harga dengan model Decision Tree
-# decision_tree_prediction = dtcModel.predict(selected_features.values)
 
-    # Melakukan prediksi
+
+# Melakukan prediksi
 y_pred = dtcModel.predict(X_test)
 
-    # Menampilkan accuracy score  dan classification report
+# Menampilkan accuracy score  dan classification report
 accuracy = accuracy_score(y_test, y_pred)
 classification_rep = classification_report(y_test, y_pred)
 st.write(f"Accuracy: {accuracy}")
@@ -103,10 +101,9 @@ st.text(classification_rep)
 # Tampilkan hasil prediksi Decision Tree
 st.subheader('Hasil Prediksi Harga Telepon (Decision Tree):')
 
-# Tampilkan kelas yang diprediksi dalam format mata uang Rupiah
 st.write(f'Harga yang Diprediksi: {float(y_pred[0])}')
 
-# Informasi tentang dataset
+
 if st.checkbox("Detail"):
     st.subheader('Detail Dataset Fitur:')
     st.write(data)
@@ -116,12 +113,12 @@ if st.checkbox("Detail"):
 
     st.bar_chart(data['price_range'].value_counts())
 
-    # Line chart untuk menunjukkan tren harga terhadap ram
+    
     st.subheader('Tren Harga vs RAM:')
     fig_line = px.line(data, x='ram', y='price_range', title='Tren Harga vs RAM')
     st.plotly_chart(fig_line)
 
-    # Area chart untuk menunjukkan persebaran harga berdasarkan px_height dan px_width
+
     st.subheader('Persebaran Harga berdasarkan Px_Height dan Px_Width:')
     fig_area = px.area(data, x='px_height', y='px_width', color='price_range', title='Persebaran Harga berdasarkan Px_Height dan Px_Width')
     st.plotly_chart(fig_area)
