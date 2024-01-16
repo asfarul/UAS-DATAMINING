@@ -34,7 +34,7 @@ try:
     dtcModel = pickle.load(open('DTC.pkl', 'rb'))
     
     # Load dataset
-    data = pd.read_csv('dataset.csv')
+    data = pd.read_csv('price_range_phone_dataset.csv')
     
     X = data.drop(['price_range'], axis = 1)
     y = data['price_range']
